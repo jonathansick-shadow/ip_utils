@@ -27,11 +27,11 @@ Utilities to handle CRs
 """
 import math
 import os
-import pdb                          # we may want to say pdb.set_trace()
 import unittest
 
-import lsst.afw.image as afwImage
+import lsst.afw.detection as afwDetection
 import lsst.afw.geom as afwGeom
+import lsst.afw.image as afwImage
 import lsst.afw.math as afwMath
 import lsst.meas.algorithms as measAlg
 
@@ -45,8 +45,9 @@ def findCosmicRays(exposure, crRejectPolicy, defaultFwhm, keepCRs):
             wcs.pixArea(afwGeom.makePointD(mi.getWidth()/2, mi.getHeight()/2))
         )*3600 # arcsec/pixel
     defaultFwhm /= scale            # convert to pixels
+    ksize = 4*int(defaultFwhm) + 1
 
-    psf = measAlg.createPSF('DoubleGaussian', 0, 0, defaultFwhm/(2*math.sqrt(2*math.log(2))))
+    psf = afwDetection.createPsf('DoubleGaussian', ksize, ksize, defaultFwhm/(2*math.sqrt(2*math.log(2))))
 
     bg = afwMath.makeStatistics(mi, afwMath.MEDIAN).getValue()
     crs = measAlg.findCosmicRays(mi, psf, bg, crRejectPolicy, keepCRs)
