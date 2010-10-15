@@ -1,5 +1,5 @@
-setupRequired(meas_algorithms)
-setupRequired(meas_astrom)
+setupRequired(meas_algorithms >= 4.1.0.0)
+setupRequired(meas_astrom >= 4.1.0.0)
 
 envAppend(LD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
 envAppend(DYLD_LIBRARY_PATH, ${PRODUCT_DIR}/lib)
