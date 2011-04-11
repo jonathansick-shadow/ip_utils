@@ -42,7 +42,7 @@ def findCosmicRays(exposure, crRejectPolicy, defaultFwhm, keepCRs):
     wcs = exposure.getWcs()
 
     scale = math.sqrt(
-            wcs.pixArea(afwGeom.makePointD(mi.getWidth()/2, mi.getHeight()/2))
+            wcs.pixArea(afwGeom.Point2D(mi.getWidth()/2, mi.getHeight()/2))
         )*3600 # arcsec/pixel
     defaultFwhm /= scale            # convert to pixels
     ksize = 4*int(defaultFwhm) + 1
