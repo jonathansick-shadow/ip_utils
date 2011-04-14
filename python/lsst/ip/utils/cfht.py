@@ -74,7 +74,7 @@ class CfhtCcdInfo(CcdInfo):
 
         for amp in self.ampList():
             p = ampBBoxDb.get("CcdBBox.Amp%d" % amp)
-            self.ampBBox[amp] = afwGeom.BBox(afwGeom.Point2I(p.get("x0"), p.get("y0")),
+            self.ampBBox[amp] = afwGeom.Box2I(afwGeom.Point2I(p.get("x0"), p.get("y0")),
                                               afwGeom.Extent2I(p.get("width"), p.get("height")))
             
         for amp in self.ampList():      # Build by hand
