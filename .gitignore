@@ -1,0 +1,14 @@
+
+# /
+/config.log
+/.sconf_temp
+/.sconsign.dblite
+
+# /doc/
+/doc/htmlDir
+
+# /python/lsst/ip/
+/python/lsst/ip/*.pyc
+
+# /python/lsst/ip/utils/
+/python/lsst/ip/utils/*.pyc
