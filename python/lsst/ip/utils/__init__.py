@@ -20,6 +20,8 @@
 # see <http://www.lsstcorp.org/LegalNotices/>.
 #
 
+from .version import *
+
 __all__ = ["cosmicRays"]
 
 import lsst.ip.utils.cosmicRays
